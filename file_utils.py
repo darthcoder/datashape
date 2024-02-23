@@ -43,4 +43,29 @@ def save_report(df, filename):
     df.to_csv(filename, index=False)  
 
 
+# suggest more file handling functions
+    
+def load_data_from_excel(filename, sheet_name):
+    """Loads data from a specific sheet in an Excel file.
+
+    Args:
+        filename (str): Path to the Excel file.
+        sheet_name (str): Name of the sheet to load.
+
+    Returns:
+        pandas.DataFrame: The loaded DataFrame.
+    """
+    return pd.read_excel(filename, sheet_name=sheet_name)
+
+def save_report_to_excel(df, filename, sheet_name): 
+    """Saves a DataFrame to a specific sheet in an Excel file.
+
+    Args:
+        df (pandas.DataFrame): The DataFrame to save.
+        filename (str): Path to the output file.
+        sheet_name (str): Name of the sheet to save to.
+    """
+    with pd.ExcelWriter(filename, engine='openpyxl', mode='a') as writer:
+        df.to_excel(writer, sheet_name=sheet_name, index=False)
+
 
